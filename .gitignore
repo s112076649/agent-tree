@@ -1,0 +1,7 @@
+# Written by the engine each time it loads the plugin from this folder.
+plugins/agent-tree/.claude-plugin/types/
+
+# Spike output: probe logs, headless run results, debug logs.
+docs/spike/
+
+*.log

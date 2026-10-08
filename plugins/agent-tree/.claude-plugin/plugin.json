@@ -1,0 +1,72 @@
+{
+  "name": "agent-tree",
+  "version": "0.2.0",
+  "description": "Bottom HUD lines for Claude Code, merged into your status line, with an on-demand live agent tree pane, external workers, Fable advisor, opt-in Jev advisory flags and session stats.",
+  "author": {
+    "name": "s112076649",
+    "url": "https://github.com/s112076649"
+  },
+  "homepage": "https://github.com/s112076649/agent-tree",
+  "repository": "https://github.com/s112076649/agent-tree",
+  "license": "MIT",
+  "keywords": ["agent-tree", "subagents", "pane", "advisor", "jev", "typesafe", "status-line"],
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "refreshMs": {
+      "type": "number",
+      "title": "Refresh interval (ms)",
+      "description": "How often the pane re-reads the agent list and session usage, in milliseconds.",
+      "default": 2000,
+      "min": 500,
+      "max": 10000
+    },
+    "autoOpen": {
+      "type": "boolean",
+      "title": "Open pane at start",
+      "description": "The pane opens on /agent-tree; set true to open it at start.",
+      "default": false
+    },
+    "statusLineHud": {
+      "type": "boolean",
+      "title": "Status line HUD",
+      "description": "Writes a small display snapshot under the Claude config folder for the agent-tree status line wrapper, and pins no status entry while on; no file is written while off.",
+      "default": false
+    },
+    "paneColumns": {
+      "type": "number",
+      "title": "Pane width (columns)",
+      "description": "Body columns the pane asks for when it docks beside the transcript. A request to Claude Code, not a guarantee: a width you drag or key the dock to wins.",
+      "default": 92,
+      "min": 60,
+      "max": 160
+    },
+    "workerCommands": {
+      "type": "string",
+      "title": "External worker commands",
+      "description": "Extra command names, comma-separated, that the pane shows as external workers when the shell tool runs them (added to the built-in list: kimi, grok, codex, opencode, gemini, chatgpt, mimo, claude, aider). Parsed on this machine only.",
+      "default": ""
+    },
+    "jevEnabled": {
+      "type": "boolean",
+      "title": "Jev flags",
+      "description": "Send a privacy-limited session summary (tool names, counts, durations; no code, paths or prompts) to TypeSafe Jev for looping, stuck, fan-out and near-done flags. Needs TYPESAFE_API_KEY in the environment.",
+      "default": false
+    },
+    "jevIntervalSec": {
+      "type": "number",
+      "title": "Jev interval (s)",
+      "description": "Minimum seconds between two Jev calls; a call is made only when new events arrived since the last one.",
+      "default": 60,
+      "min": 15,
+      "max": 600
+    },
+    "jevMaxCallsPerHour": {
+      "type": "number",
+      "title": "Jev calls per hour",
+      "description": "Upper bound on Jev calls in any hour.",
+      "default": 60,
+      "min": 1,
+      "max": 240
+    }
+  }
+}

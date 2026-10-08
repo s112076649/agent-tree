@@ -1,0 +1,4 @@
+{
+  "description": "agent-tree: the Agent Tree pane (main loop and subagents), the advisor line, the opt-in Jev flags, its stats line and status entry, and the /agent-tree toggle",
+  "modules": ["./register.tsx"]
+}
