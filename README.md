@@ -43,7 +43,7 @@ claude plugin uninstall agent-tree@agent-tree
 claude plugin marketplace remove agent-tree
 ```
 
-These command forms were checked against local Claude Code 2.1.293 `--help`. A local marketplace install was verified on 2.1.289; the public GitHub install is not yet end-to-end verified.
+Verified on 2026-10-08 with Claude Code 2.1.293 on Windows 11, in a clean config folder: the two GitHub commands installed 0.2.0, the wrapper was at the stable path given under [Bottom HUD](#bottom-hud-optional) and printed HUD lines when run through PowerShell as a status line command, and the two remove commands removed the plugin and the marketplace again.
 
 ## Bottom HUD (optional)
 
@@ -319,7 +319,6 @@ Claude Code's plugin API declarations say that an administrator's policy can ref
 - The session log keeps 200 entries. Reloading does not clear it; `/clear` is intended to keep it and the tree/call bookkeeping, but the live behavior is not verified. Advisor token readings after a transcript change describe that transcript. Log entries such as `advised` carry latency, not token counts.
 - Advisor transcripts over 3.5 MiB are left unread; token figures become `tok n/a (transcript too large)`. The file API has a 4 MiB read bound and no range read.
 - Jev's `last` is the latest attempt, including failures; `calls` counts answers. After a failed call the pane retains the previous flags and health until the next answer. The HUD does not show error text. Real hourly-cap, policy-refusal and failure cases are covered by mocks, not a complete live test matrix.
-- The GitHub installation path is documented from CLI help and the marketplace-clone behavior; an actual public-repository install has not been verified before publication.
 
 ## Development
 
@@ -342,7 +341,7 @@ claude --plugin-dir ./plugins/agent-tree
 
 Claude Code writes generated API types under `plugins/agent-tree/.claude-plugin/types/` (git-ignored). Hook registrations and engine calls live in `hooks/register.tsx`; the other hook modules format and update plain data, and drawing only reads state. The wrapper's independent `.mjs` modules use Node's standard library. No build is needed.
 
-The version is declared in `plugins/agent-tree/.claude-plugin/plugin.json`; each release updates it and [CHANGELOG.md](CHANGELOG.md). Release gates do not verify the public GitHub download or the remaining live-screen checks.
+The version is declared in `plugins/agent-tree/.claude-plugin/plugin.json`; each release updates it and [CHANGELOG.md](CHANGELOG.md). Release gates do not cover the remaining live-screen checks; the GitHub install of 0.2.0 was checked by hand (see [Install](#install)).
 
 ## License
 
